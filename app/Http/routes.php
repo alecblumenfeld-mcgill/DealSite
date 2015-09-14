@@ -43,8 +43,10 @@ Route::group(['prefix' => 'manage'], function () {
 
     Route::get('/', 'ManageController@index');
 
+    Route::post('/check', 'ManageController@check');
 
-    
+
+
 
     
 });

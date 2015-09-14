@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -10,7 +12,8 @@ use Auth;
 use App\User;
 use Hash;
 use Parse\ParseQuery;
-
+use Parse\ParseObject;
+use Input;
 class ManageController extends Controller
 {
     /**
@@ -26,8 +29,13 @@ class ManageController extends Controller
             
             $query = new ParseQuery("Transaction");
             $query->limit(1000);
-            dd($query->find());
-            
+            //only Get results from that sponsor 
+            $query->equalTo("sponsor", $user->sponsor);
+            $query->equalTo("deployment", env("DEPLOYMENT"));
+            $query->equalTo("used", false);
+            // dd($query->find());
+            $data = $query->find();
+            return View::make('manage.unused',$data )->with( 'data', $data) ;//)->with($query->find());
 
         }
         else{
@@ -40,8 +48,28 @@ class ManageController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function check()
     {
+        $user = Auth::user();
+        if ($user)
+        {
+            $input = Input::all();
+            $query = new ParseQuery("Transaction");
+            $object = $query->get($input["id"]);
+
+            $object->set("used", true);
+            $object->save();
+            echo "true";
+
+
+
+        
+        }
+        else{
+            return Redirect::to('login');
+        }
+
+
         //
     }
 

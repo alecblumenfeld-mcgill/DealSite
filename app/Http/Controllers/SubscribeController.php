@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
-
+use Input;
 use Parse\ParseObject;
 
 
@@ -87,6 +87,7 @@ class SubscribeController extends Controller
         $object->set("studentID", $input['IdNumber']);
         $object->set("sponsor", $input['sponsor']);
         $object->set("stripeToken", $input['stripeToken']);
+        $object->set("used", false);
 
         $object->set("deployment", env('DEPLOYMENT'));
 
