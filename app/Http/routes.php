@@ -1,5 +1,4 @@
 <?php
-use Parse\ParseObject;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +16,37 @@ Route::get('/', function () {
    
     return view('home');
 
+});
+
+
+
+Route::get('/register', function () {
+    return view('manage.register');
+});
+
+
+Route::group(['prefix' => 'manage'], function () {
+ 
+
+
+    Route::post('/register', 'ProfileController@registerUser');
+
+
+    Route::get('/logout', 'ProfileController@logout');
+
+    Route::get('/login', function () {
+        return view('manage.login');
+    });
+
+    Route::post('/login', 'ProfileController@login');
+
+
+    Route::get('/', 'ManageController@index');
+
+
+    
+
+    
 });
 Route::get('/thanks', function () {
     // if (session('data')['flag'] != "true") {
