@@ -74,12 +74,14 @@
         $('<input>').attr({
                 type: 'hidden',
                 id: 'Name',
-                name:  data.Name
+                name: 'Name',
+                value:  data.Name
             }).appendTo('form');
         $('<input>').attr({
                 type: 'hidden',
                 id: 'IdNumber',
-                name:  data.IdNumber
+                name: 'IdNumber',
+                value:  data.IdNumber
             }).appendTo('form');
 
 
@@ -105,7 +107,7 @@
             body: `
                   <p>Please Enter Your McGill ID and Name as it is stated on Your McGill ID</p>
                   <input class="basicModal__text" type="text" placeholder="Name" name="Name">
-                  <input class="basicModal__text" type="password" placeholder="McGill ID Number" name="IdNumber">
+                  <input class="basicModal__text" type="text" placeholder="McGill ID Number" name="IdNumber">
                   `,
             class: basicModal.THEME.small,
             closable: true,

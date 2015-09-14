@@ -64,9 +64,10 @@
                         <div class="inline-headers">
                         <h1 class="green mb0 inline">$20</h1> <h2 class="inline pl1">in credit for $10</h2>
                     </div>
+                    <br>
                         <a href="#" id="verify-btn"class="btn btn-primary btn-xl  mt4 verify-btn">Verify Yourself</a>
 
-                         <form action="/sponsor/1show" method="POST">
+                         <form action="/sponsor/1show" method="POST" class="mt4" >
                             {!! csrf_field() !!}
                             <input type="hidden" name="token" value="{{ csrf_token() }}">
                             <input type="hidden" name="sponsor" value="BOUSTAN">
@@ -76,9 +77,9 @@
                               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                               data-key="pk_test_wCwW29ZsdUIiU0ikzXVsLyZB"
                               data-amount="20000"
-                              data-name="Sponsor Shows"
+                              data-name="Boustans"
                               data-description="1 Show a Month ($200.00)"
-                              data-image="/128x128.png">
+                              >
                       </script>
                   </form>
 </div>

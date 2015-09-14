@@ -160,6 +160,8 @@ return [
 
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 
+        GrahamCampbell\Parse\ParseServiceProvider::class,
+
     ],
 
     /*

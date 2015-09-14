@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
+
+use Parse\ParseObject;
+
+
+
+
 class SubscribeController extends Controller
 {
  
@@ -70,6 +76,25 @@ class SubscribeController extends Controller
             'currency' => 'CAD',
             'amount'   => env($input['sponsor']."_PRICE"),
         ]);
+
+        //Save to Parse
+        $object = ParseObject::create("Transaction");
+        $objectId = $object->getObjectId();
+
+        // Set values:
+        $object->set("name", $input['Name']);
+        $object->set("email", $input['stripeEmail']);
+        $object->set("studentID", $input['IdNumber']);
+        $object->set("sponsor", $input['sponsor']);
+        $object->set("stripeToken", $input['stripeToken']);
+
+        $object->set("deployment", env('DEPLOYMENT'));
+
+        
+
+        // Save:
+        $object->save();
+
         
        //CHECK FOR EMAIL, send success email
 
