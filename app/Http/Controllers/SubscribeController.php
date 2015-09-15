@@ -18,6 +18,7 @@ use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 use Parse\ParseObject;
 
+use View;
 
 
 
@@ -81,37 +82,36 @@ class SubscribeController extends Controller
         $objectId = $object->getObjectId();
 
         // Set values:
-        $object->set("name", $input['Name']);
+        $object->set("name", $input['email']);
         $object->set("email", $input['stripeEmail']);
         $object->set("studentID", $input['IdNumber']);
         $object->set("sponsor", $input['sponsor']);
         $object->set("stripeToken", $input['stripeToken']);
         $object->set("used", false);
-
+        $object->set("deal", env($input['sponsor']."_DEAL_TITLE"));
         $object->set("deployment", env('DEPLOYMENT'));
-
-        
-
+        $object->set("experation", env($input['sponsor']."_EXPIRATION"));
         // Save:
         $object->save();
 
-        
-       //CHECK FOR EMAIL, send success email
-
         //data to pass
         $data = [
-
-            "deadline" =>  env($input['sponsor']."_DEADLINE"),
-            "retailer" =>   env($input['sponsor']."_RETAILER"),
+            "expirationdate" =>  env($input['sponsor']."_EXPIRATION"),
+            "sponsorName" =>   env($input['sponsor']."_RETAILER"),
+            "stripeOrderNumber" => $charge['id'],
             "flag" =>  "true",
         ];
+
+
         //mail message
-        Mail::send('email.thanks', $data, function ($message) {
-            $message->to('alecblumenfeld@gmail.com');
+        // Mail::send('email.thanks', $data, function ($message) {
+        //     $message->to('alecblumenfeld@gmail.com');
 
-        });
+        // });
+        //return to thanks
 
-        return    Redirect::to('thanks')->with("data", $data);
+        return View::make('thanks',$data )->with( 'data', $data);
+
     }
  
     public function post2Show()

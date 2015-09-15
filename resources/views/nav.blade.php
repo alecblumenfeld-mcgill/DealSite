@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand page-scroll" href="\">McGill Buyers Club</a>
+                    <a class="navbar-brand page-scroll" href="\">McGill Deals</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

@@ -49,11 +49,11 @@
     $('.verify-btn').click(function(e){
      e.preventDefault();
     var validate = function(data) {
-
-        if (data.Name.indexOf(" ") === -1) {
+        console.log(data.email.indexOf("@mail.mcgill.ca"));
+        if (!(data.email.indexOf("@mail.mcgill.ca") > 0) || (data.email.indexOf("@mcgill.ca") >0)  ) {
 
             // Invalid username
-            basicModal.error('Name')
+            basicModal.error('email')
             return false
 
         }
@@ -73,8 +73,8 @@
 
         $('<input>').attr({
                 type: 'hidden',
-                id: 'Name',
-                name: 'Name',
+                id: 'email',
+                name: 'email',
                 value:  data.Name
             }).appendTo('form');
         $('<input>').attr({
@@ -85,19 +85,8 @@
             }).appendTo('form');
 
 
-
+        $(this).data( "data-email", data.Name )
         });
-
-        
-
-
-        // $('<input>').attr({
-        //         type: 'hidden',
-        //         id: 'IdNumber',
-        //         name:  data.IdNumber
-        //     }).appendTo('form');
-        // });
-
 
         return true
 
@@ -106,7 +95,7 @@
         basicModal.show({
             body: `
                   <p>Please Enter Your McGill ID and Name as it is stated on Your McGill ID</p>
-                  <input class="basicModal__text" type="text" placeholder="Name" name="Name">
+                  <input class="basicModal__text" type="text" placeholder="McGill Email" name="email">
                   <input class="basicModal__text" type="text" placeholder="McGill ID Number" name="IdNumber">
                   `,
             class: basicModal.THEME.small,

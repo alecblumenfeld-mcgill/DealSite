@@ -8,7 +8,7 @@
     <meta name="author" content="">
 <meta name="csrf_token" ="{{ csrf_token() }}" />
 
-    <title>Martlet Buyers Club</title>
+    <title>McGill Deals</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">

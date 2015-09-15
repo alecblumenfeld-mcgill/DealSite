@@ -22,7 +22,12 @@
                 <div class="row">
                     <div class="col-lg-12 text-left">
                         <h2 class="section-heading">Whats Next?</h2>
-                        <p>Just bring your mcgill id to {{session('data')['retailer']}} by {{session('data')['deadline']}} inorder to redeam your purchase </p>
+                        <p>Please check your email for your official receipt for your order. In which you will be given another record of your order number which is:<br>
+                         <b>{{$stripeOrderNumber}}</b> <br>
+                         All you have to do now is go to {{$sponsorName}} by {{ date('F jS',strtotime($expirationdate))}} and bring your McGill ID to redeem your order.</p> 
+
+                        <p>If you have any problems, feel free to contact us at support@mcgill-deals.com</p>
+
                     </div>
                 </div>
             </div>
@@ -38,25 +43,8 @@
             </div>
         </section>
         
-<section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Let's Get In Touch!</h2>
-                <hr class="primary">
-                <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-            </div>
-            <div class="col-lg-4 col-lg-offset-2 text-center">
-                <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                <p>123-456-6789</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
-            </div>
-        </div>
-    </div>
-</section>
+@include("contact")
+
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>

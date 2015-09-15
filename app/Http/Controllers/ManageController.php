@@ -128,18 +128,17 @@ class ManageController extends Controller
         if ($user)
         {
             $input = Input::all();
-
+            //get used paramater and set it to a boolean
             $used = $input['used'] == 'true' ? true : false;
             $search = $input['search'] ;
 
             $query = new ParseQuery("Transaction");
             $query->limit(1000);
+
             //only Get results from that sponsor 
             $query->equalTo("sponsor", $user->sponsor);
             $query->equalTo("deployment", env("DEPLOYMENT"));
             $query->equalTo("studentID", $search);
-
-
             $query->equalTo("used", $used);
 
             $data = $query->find();
