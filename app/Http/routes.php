@@ -12,10 +12,7 @@
 */
 
 Route::get('/', function () {
-        
-   
     return view('home');
-
 });
 
 
@@ -24,38 +21,34 @@ Route::get('/register', function () {
     return view('manage.register');
 });
 
+Route::get('/thanks', function () {
+    return view('thanks');
+});
+Route::get('/login', function () {
+    return view('manage.login');
+});
+
 
 Route::group(['prefix' => 'manage'], function () {
  
-
-
     Route::post('/register', 'ProfileController@registerUser');
-
 
     Route::get('/logout', 'ProfileController@logout');
 
-    Route::get('/login', function () {
-        return view('manage.login');
-    });
+    Route::get('/login', function () {return view('manage.login');});
 
     Route::post('/login', 'ProfileController@login');
 
+    Route::get('/', 'ManageController@showUnused');
 
-    Route::get('/', 'ManageController@index');
+    Route::get('/used', 'ManageController@showUsed');
+
+    Route::post('/search', 'ManageController@search');
 
     Route::post('/check', 'ManageController@check');
 
+    Route::post('/uncheck', 'ManageController@uncheck');
 
-
-
-    
-});
-Route::get('/thanks', function () {
-    // if (session('data')['flag'] != "true") {
-    //     return redirect('/');
-    // }
-	
-    return view('thanks');
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {

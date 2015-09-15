@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
 
 
 use App\Http\Requests;
@@ -21,7 +22,7 @@ class ManageController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function showUnused()
     {
         $user = Auth::user();
         if ($user)
@@ -36,6 +37,31 @@ class ManageController extends Controller
             // dd($query->find());
             $data = $query->find();
             return View::make('manage.unused',$data )->with( 'data', $data) ;//)->with($query->find());
+
+        }
+        else{
+            return Redirect::to('login');
+        }
+    }
+
+
+
+
+    public function showUsed()
+    {
+        $user = Auth::user();
+        if ($user)
+        {
+            
+            $query = new ParseQuery("Transaction");
+            $query->limit(1000);
+            //only Get results from that sponsor 
+            $query->equalTo("sponsor", $user->sponsor);
+            $query->equalTo("deployment", env("DEPLOYMENT"));
+            $query->equalTo("used", true);
+
+            $data = $query->find();
+            return View::make('manage.used',$data )->with( 'data', $data) ;//)->with($query->find());
 
         }
         else{
@@ -59,18 +85,11 @@ class ManageController extends Controller
 
             $object->set("used", true);
             $object->save();
-            echo "true";
 
-
-
-        
         }
         else{
             return Redirect::to('login');
         }
-
-
-        //
     }
 
     /**
@@ -79,9 +98,22 @@ class ManageController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function uncheck(Request $request)
     {
-        //
+        $user = Auth::user();
+        if ($user)
+        {
+            $input = Input::all();
+            $query = new ParseQuery("Transaction");
+            $object = $query->get($input["id"]);
+
+            $object->set("used", false);
+            $object->save();
+
+        }
+        else{
+            return Redirect::to('login');
+        }
     }
 
     /**
@@ -90,10 +122,40 @@ class ManageController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function search()
     {
-        //
-    }
+        $user = Auth::user();
+        if ($user)
+        {
+            $input = Input::all();
+
+            $used = $input['used'] == 'true' ? true : false;
+            $search = $input['search'] ;
+
+            $query = new ParseQuery("Transaction");
+            $query->limit(1000);
+            //only Get results from that sponsor 
+            $query->equalTo("sponsor", $user->sponsor);
+            $query->equalTo("deployment", env("DEPLOYMENT"));
+            $query->equalTo("studentID", $search);
+
+
+            $query->equalTo("used", $used);
+
+            $data = $query->find();
+            if ($used) {
+                return View::make('manage.used',$data )->with( 'data', $data) ;//)->with($query->find());
+
+            }
+            elseif (condition) {
+                return View::make('manage.unused',$data )->with( 'data', $data) ;//)->with($query->find());
+
+            }
+            
+        }
+        else{
+            return Redirect::to('login');
+        }    }
 
     /**
      * Show the form for editing the specified resource.

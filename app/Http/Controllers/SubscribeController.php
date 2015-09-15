@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
-use Input;
 use Parse\ParseObject;
 
 
