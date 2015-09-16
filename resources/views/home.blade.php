@@ -47,8 +47,7 @@
 
 
 @include('sponsors.boustan')
-@include('sponsors.boustan')
-@include('sponsors.boustan')
+
 
 
 @include('values')

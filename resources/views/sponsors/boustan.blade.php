@@ -20,6 +20,7 @@
                 </div>
                 <br>
                 <a href="#" id="verify-btn"class="btn btn-primary btn-xl  mt4 verify-btn">Verify Yourself</a>
+                <a href="" id="boustans-info" class="btn btn-primary btn-xl  ml1 mt4 ">More Info</a>
 
                 <form action="/sponsor/1show" method="POST" class="mt4" >
                     {!! csrf_field() !!}
@@ -41,3 +42,23 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+(function($) {
+"use strict";
+
+$('#boustans-info').click(function(e){
+    e.preventDefault();
+    basicModal.show({
+        body: '<p><b>Expiry:</b> June 20th 2016 Limitations: 1 coupon per person. Can not be combined with other promotions.  Not transferable. See the rules. That apply to all deals <br> <b>Taxes:</b> Not included, applicable on the amount paid on mcgilldeals.com.<br>',
+        closable: true,
+        buttons: {
+            action: {
+                title: 'Dismiss',
+                fn: basicModal.close
+            }
+        }
+    })
+})
+})(jQuery);
+
+</script>

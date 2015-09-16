@@ -75,7 +75,7 @@
                 type: 'hidden',
                 id: 'email',
                 name: 'email',
-                value:  data.Name
+                value:  data.email
             }).appendTo('form');
         $('<input>').attr({
                 type: 'hidden',

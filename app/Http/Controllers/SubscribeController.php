@@ -99,16 +99,16 @@ class SubscribeController extends Controller
             "expirationdate" =>  env($input['sponsor']."_EXPIRATION"),
             "sponsorName" =>   env($input['sponsor']."_RETAILER"),
             "stripeOrderNumber" => $charge['id'],
+            "price" => env($input['sponsor']."_PRICE"),
+            "email" => $input['email'],
             "flag" =>  "true",
         ];
 
+        $email = $input['stripeEmail'];
 
-        //mail message
-        // Mail::send('email.thanks', $data, function ($message) {
-        //     $message->to('alecblumenfeld@gmail.com');
-
-        // });
-        //return to thanks
+        Mail::send('email.billing', $data, function ($message)  use ($email) {
+            $message->to($email)->subject('Thank you for Your Order');
+        });
 
         return View::make('thanks',$data )->with( 'data', $data);
 
