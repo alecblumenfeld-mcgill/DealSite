@@ -70,6 +70,8 @@
 <script src="js/basicModal.min.js"></script>
 
 <script src="js/home.js"></script>
+<!-- Analytics -->
+@include('analytics')  
 
 </body>
 

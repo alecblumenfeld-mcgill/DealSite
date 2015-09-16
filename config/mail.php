@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => "postmaster@sandbox9af410eb31884a3e84f6b388dad67183.mailgun.org", 'name' => 'DEALS'],
+    'from' => ['address' => "postmaster@mcgilldeals.com", 'name' => 'McGill Deals'],
 
     /*
     |--------------------------------------------------------------------------

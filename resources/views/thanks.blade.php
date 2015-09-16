@@ -47,6 +47,7 @@
 
 
 <!-- jQuery -->
+
 <script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
@@ -59,6 +60,9 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
+
+<!-- Analytics -->
+@include('analytics')     
 
 </body>
 
