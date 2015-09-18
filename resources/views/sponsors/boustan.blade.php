@@ -19,10 +19,7 @@
                     <h1 class="green mb0 inline">$20</h1> <h2 class="inline pl1">in credit for $10</h2>
                 </div>
                 <br>
-                <a href="#" id="verify-btn"class="btn btn-primary btn-xl  mt4 verify-btn">Verify Yourself</a>
-                <a href="" id="boustans-info" class="btn btn-primary btn-xl  ml1 mt4 ">More Info</a>
-
-                <form action="/sponsor/1show" method="POST" class="mt4" >
+                <form action="/sponsor/purchase" method="POST" class="mt4" >
                     {!! csrf_field() !!}
                     <input type="hidden" name="token" value="{{ csrf_token() }}">
                     <input type="hidden" name="sponsor" value="BOUSTAN">
@@ -38,6 +35,10 @@
                     >
                     </script>
                 </form>
+                <a href="#" id="verify-btn"class="btn btn-primary btn-xl  mt4 verify-btn">Verify Yourself</a>
+                <a href="" id="boustans-info" class="btn btn-primary btn-xl  ml1 mt4 ">More Info</a>
+
+                
             </div>
         </div>
     </div>

@@ -59,7 +59,7 @@ class SubscribeController extends Controller
         return view('stripe.subscribe', compact('public_key'));
     }
  
-    public function post1Show()
+    public function purchase()
     {
         $input = Input::all();
         $mailEmail = strpos($input['stripeEmail'], "mail.mcgill.ca");

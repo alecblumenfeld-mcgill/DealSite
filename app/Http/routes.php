@@ -63,11 +63,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
 });
 Route::group(['prefix' => 'sponsor'], function() {
  
-    Route::get('/', 'SubscribeController@getSponsorPage');
  
-    Route::post('1show', 'SubscribeController@post1Show');
+    Route::post('purchase', 'SubscribeController@purchase');
  
-    Route::post('2show', 'SubscribeController@post2Show');
- 
-    Route::post('fan', 'SubscribeController@postFan');
 });
