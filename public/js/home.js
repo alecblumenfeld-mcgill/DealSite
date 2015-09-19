@@ -93,22 +93,19 @@
     }
 
         basicModal.show({
-            body: `
-                  <p>Please Enter Your McGill ID and Name as it is stated on Your McGill ID</p>
-                  <input class="basicModal__text" type="text" placeholder="McGill Email" name="email">
-                  <input class="basicModal__text" type="text" placeholder="McGill ID Number" name="IdNumber">
-                  `,
+            body: '<p>Please Enter Your McGill Email and Your McGill ID.<br> <b>Please Read Terms Before Paying</b></p><input class="basicModal__text" type="text" placeholder="McGill Email" name="email"><input class="basicModal__text" type="text" placeholder="McGill ID Number" name="IdNumber">',
             class: basicModal.THEME.small,
             closable: true,
             buttons: {
-                cancel: {
-                    class: basicModal.THEME.xclose,
-                    fn: basicModal.close
+                 cancel: {
+            class: basicModal.THEME.xclose,
+            fn: basicModal.close
                 },
                 action: {
                     title: 'Confirm',
                     fn: validate
                 }
+                
             }
         })
     });
