@@ -1,20 +1,21 @@
-@if (strtotime('now') < strtotime(env('BOUSTAN_DEADLINE')))
+
+@if (strtotime('now') < strtotime(env('DEVILDOG_DEADLINE')))
     <section id="tf-about" style="padding-top:0px">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="/img/sponsor-img/boustan.jpg" class="img-responsive">
+                    <img src="/img/sponsor-img/devildog.jpg" class="img-responsive">
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h4>Boustans</h4>
-                            <h2>The Best Late Night Lebinse Food You'll ever Tase</h2>
+                            <h4>DEVILDOG's</h4>
+                            <h2>You havent seen hot dogs like this before</h2>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
                         <p class="intro">We love building and rebuilding brands through our  specific skills. Using colour, fonts, and illustration, we brand companies in a way they will never forget.</p>
-                        <p class="intro"><b>Deadline: </b>{{ date('F jS g:i a',strtotime(env('BOUSTAN_DEADLINE')))}}</p>
+                        <p class="intro"><b>Deadline: </b>{{ date('F jS g:i a',strtotime(env('DEVILDOG_DEADLINE')))}}</p>
 
                     </div>
                     <div class="inline-headers">
@@ -24,7 +25,7 @@
                     <form action="/sponsor/purchase" method="POST" class="mt4" >
                         {!! csrf_field() !!}
                         <input type="hidden" name="token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="sponsor" value="BOUSTAN">
+                        <input type="hidden" name="sponsor" value="DEVILDOG">
 
                         <script
 
@@ -32,13 +33,13 @@
                         data-key="pk_test_wCwW29ZsdUIiU0ikzXVsLyZB"
                         data-amount="1000"
                         data-email = ""
-                        data-name="Boustans"
+                        data-name="DEVILDOGs"
                         data-description="$20 of an order for $10"
                         >
                         </script>
                     </form>
                     <a href="#" id="verify-btn"class="btn btn-primary btn-xl  mt4 verify-btn">Verify Yourself</a>
-                    <a href="" id="boustans-info" class="btn btn-primary btn-xl  ml1 mt4 ">More Info</a>
+                    <a href="" id="DEVILDOGs-info" class="btn btn-primary btn-xl  ml1 mt4 ">More Info</a>
 
                     
                 </div>
@@ -49,7 +50,7 @@
     (function($) {
     "use strict";
 
-    $('#boustans-info').click(function(e){
+    $('#DEVILDOGs-info').click(function(e){
         e.preventDefault();
         basicModal.show({
             body: '<p><b>Expiry:</b> June 20th 2016 Limitations: 1 coupon per person. Can not be combined with other promotions.  Not transferable. See the rules. That apply to all deals <br> <b>Taxes:</b> Not included, applicable on the amount paid on mcgilldeals.com.<br>',

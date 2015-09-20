@@ -47,6 +47,7 @@
 
 
 @include('sponsors.boustan')
+@include('sponsors.devildog')
 
 
 
@@ -70,6 +71,28 @@
 <script src="js/basicModal.min.js"></script>
 
 <script src="js/home.js"></script>
+
+<script type="text/javascript">
+    (function($) {
+    "use strict";
+
+    $( document ).ready(function(){
+
+        basicModal.show({
+            body: '<p><b>Notice:</b> Hi and welcome to McgillDeals.com, We are getting ready for launch and are not ready to start procesing payments. The site is avliable to view though so feel free to take a look around',
+            closable: true,
+            buttons: {
+                action: {
+                    title: 'Dismiss',
+                    fn: basicModal.close
+                }
+            }
+        })
+    })
+    })(jQuery);
+
+    </script>
+
 <!-- Analytics -->
 @include('analytics')  
 

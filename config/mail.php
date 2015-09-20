@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => "postmaster@mcgilldeals.com", 'name' => 'McGill Deals'],
+    'from' => ['address' => "donotreply@mcgilldeals.com", 'name' => 'McGill Deals'],
 
     /*
     |--------------------------------------------------------------------------
