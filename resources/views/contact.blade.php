@@ -10,7 +10,7 @@
             
             <div class="col-sm-12 text-center">
                 <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><a href="mailto:contact@mymartlet.com">contact@mymartlet.com</a></p>
+                <p><a href="mailto:contact@mcgilldeals.com">contact@mcgilldeals.com</a></p>
             </div>
         </div>
     </div>
